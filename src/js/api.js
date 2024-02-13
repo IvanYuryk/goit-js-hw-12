@@ -11,10 +11,9 @@ export async function fetchImage(keyWord, page) {
         safesearch: true,
         per_page: 15,
         page,
-
     });
-    const URL = `${BASE_URL}${END_POINT}?${PARAMS}`;
 
+    const URL = `${BASE_URL}${END_POINT}?${PARAMS}`;
     const { data } = await axios(URL)
 
     return data;

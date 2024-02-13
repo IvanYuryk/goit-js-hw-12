@@ -31,7 +31,6 @@ async function onSearch(event) {
   } catch (error) {
     onRejected(error);
   } finally { loaderContainer.style.display = 'none' };
-
 }
 
 async function onLoadMore() {
