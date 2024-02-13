@@ -1,4 +1,4 @@
-import{i as c,S as g}from"./assets/vendor-9310f15c.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const i of t.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&s(i)}).observe(document,{childList:!0,subtree:!0});function r(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerpolicy&&(t.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?t.credentials="include":e.crossorigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=r(e);fetch(e.href,t)}})();const p="/goit-js-hw-11/assets/dang-75a3a476.svg",d="/goit-js-hw-11/assets/err-d9947029.svg",u="/goit-js-hw-11/assets/x-a193917d.svg";function f(){c.warning({title:"Sorry,",titleColor:"#FFFFFF",message:"there are no images matching your search query. Please try again!",messageColor:"#FFFFFF",messageSize:"16px",backgroundColor:"#FFA000",iconUrl:p,position:"center",close:!1,buttons:[[`<button type="button" style="
+import{i as m,S as x,a as L}from"./assets/vendor-2618a76b.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))i(t);new MutationObserver(t=>{for(const n of t)if(n.type==="childList")for(const r of n.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&i(r)}).observe(document,{childList:!0,subtree:!0});function s(t){const n={};return t.integrity&&(n.integrity=t.integrity),t.referrerpolicy&&(n.referrerPolicy=t.referrerpolicy),t.crossorigin==="use-credentials"?n.credentials="include":t.crossorigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function i(t){if(t.ep)return;t.ep=!0;const n=s(t);fetch(t.href,n)}})();const S="/goit-js-hw-11/assets/dang-75a3a476.svg",k="/goit-js-hw-11/assets/err-d9947029.svg",p="/goit-js-hw-11/assets/x-a193917d.svg";function g(e){m.warning({title:"Sorry,",titleColor:"#FFFFFF",message:e,messageColor:"#FFFFFF",messageSize:"16px",backgroundColor:"#FFA000",iconUrl:S,position:"center",close:!1,buttons:[[`<button type="button" style="
           background-color: #FFA000; 
           width: 20px; 
           height: 20px; 
@@ -6,8 +6,8 @@ import{i as c,S as g}from"./assets/vendor-9310f15c.js";(function(){const o=docum
             <img style="
               width: 10px; 
               height: 10px" 
-              src=${u}>
-        </button>`,function(n,o){n.hide({transitionOut:"fadeOut"},o)}]]})}function h(n){c.show({title:"Error",titleColor:"#FFFFFF",message:`${n}`,messageColor:"#FFFFFF",messageSize:"16px",backgroundColor:"#EF4040",iconUrl:d,position:"topRight",close:!1,buttons:[[`<button type="button" style="
+              src=${p}>
+        </button>`,function(o,s){o.hide({transitionOut:"fadeOut"},s)}]]})}function y(e){m.show({title:"Error",titleColor:"#FFFFFF",message:e.message,messageColor:"#FFFFFF",messageSize:"16px",backgroundColor:"#EF4040",iconUrl:k,position:"topRight",close:!1,buttons:[[`<button type="button" style="
           background-color: #EF4040; 
           width: 20px; 
           height: 20px; 
@@ -15,30 +15,30 @@ import{i as c,S as g}from"./assets/vendor-9310f15c.js";(function(){const o=docum
             <img style="
               width: 10px; 
               height: 10px" 
-                src=${u}>
-        </button>`,function(o,r){o.hide({transitionOut:"fadeOut"},r)}]]})}const y=new g(".gallery a",{captionDelay:250,captionsData:"alt"}),a=document.querySelector(".gallery");function F({totalHits:n,hits:o}){if(parseInt(n)>0){const r=o.map(b).join("");a.innerHTML=r,y.refresh()}else a.innerHTML="",f()}function b({webformatURL:n,largeImageURL:o,tags:r,likes:s,views:e,comments:t,downloads:i}){return`
+                src=${p}>
+        </button>`,function(o,s){o.hide({transitionOut:"fadeOut"},s)}]]})}const $=new x(".gallery a",{captionDelay:250,captionsData:"alt"}),d=document.querySelector(".gallery");function f({totalHits:e,hits:o}){if(parseInt(e)>0){const s=o.map(v).join("");d.insertAdjacentHTML("beforeend",s),$.refresh()}else d.innerHTML="",g("there are no images matching your search query. Please try again!")}function v({webformatURL:e,largeImageURL:o,tags:s,likes:i,views:t,comments:n,downloads:r}){return`
   <li class="gallery-item">
     <a class="gallery-link" href="${o}">
-      <img class="gallery-image" src="${n}" alt="${r}">
+      <img class="gallery-image" src="${e}" alt="${s}">
     </a>
     <ul class="item-img">
       <li class="elem-img">
         <p class="elem-name">Likes</p>
-        <p>${s}</p>
+        <p>${i}</p>
       </li>
       <li class="elem-img">
         <p class="elem-name">Views</p>
-        <p>${e}</p>
-      </li>
-      <li class="elem-img">
-        <p class="elem-name">Comments</p>
         <p>${t}</p>
       </li>
       <li class="elem-img">
+        <p class="elem-name">Comments</p>
+        <p>${n}</p>
+      </li>
+      <li class="elem-img">
         <p class="elem-name">Downloads</p>
-        <p>${i}</p>
+        <p>${r}</p>
       </li>
     </ul>
   </li>
-  `}function x(n){const o="https://pixabay.com/",r="api/",s=new URLSearchParams({key:"42208232-118910d8102453b47e924ae6c",q:n,image_type:"photo",orientation:"horizontal",safesearch:!0}),e=`${o}${r}?${s}`;return fetch(e).then(t=>{if(t.ok)return t.json();throw new Error(`${t.status} - ${t.statusText}`)})}const m=document.querySelector("#searchForm"),l=document.querySelector(".loader");m.addEventListener("submit",w);function w(n){n.preventDefault();const o=n.target.keyword.value.trim();o&&(l.style.display="block",x(o).then(r=>{F(r)}).catch(r=>{h(r)}).finally(()=>l.style.display="none"),m.reset())}
+  `}async function h(e,o){const s="https://pixabay.com/",i="api/",t=new URLSearchParams({key:"42208232-118910d8102453b47e924ae6c",q:e,image_type:"photo",orientation:"horizontal",safesearch:!0,per_page:15,page:o}),n=`${s}${i}?${t}`,{data:r}=await L(n);return r}const F=document.querySelector(".gallery"),b=document.querySelector("#searchForm"),l=document.querySelector(".loader"),u=document.querySelector("#load");let a=1,c="";b.addEventListener("submit",C);u.addEventListener("click",E);async function C(e){e.preventDefault();const o=e.target.keyword.value.trim();if(o){F.innerHTML="",l.style.display="block",c=o,a=1;try{const s=await h(c,a);f(s),w(),u.style.display="block",b.reset()}catch(s){y(s)}finally{l.style.display="none"}}}async function E(){a+=1,l.style.display="block";try{const e=await h(c,a);f(e),w(),a===Math.ceil(e.totalHits/15)&&(g("We're sorry, but you've reached the end of search results."),u.style.display="none")}catch(e){y(e)}finally{l.style.display="none"}}function w(){const{height:e}=F.firstElementChild.getBoundingClientRect();window.scrollBy({top:e*2,behavior:"smooth"})}
 //# sourceMappingURL=commonHelpers.js.map
