@@ -50,7 +50,6 @@ async function onLoadMore() {
   } finally { loaderContainer.style.display = 'none' };
 }
 
-
 function smoothScroll() {
   const { height } = imageList.firstElementChild.getBoundingClientRect();
   window.scrollBy({
