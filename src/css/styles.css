@@ -232,6 +232,6 @@ input[type='text']:focus {
   }
 }
 
-.loader.hide {
+.hide {
   display: none;
 }

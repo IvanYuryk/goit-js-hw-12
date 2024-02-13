@@ -4,11 +4,11 @@ import dangIcon from '../img/dang.svg';
 import errorIcon from '../img/err.svg';
 import xIcon from '../img/x.svg';
 
-export function onWarning() {
+export function onWarning(message) {
     iziToast.warning({
         title: 'Sorry,',
         titleColor: '#FFFFFF',
-        message: 'there are no images matching your search query. Please try again!',
+        message,
         messageColor: '#FFFFFF',
         messageSize: '16px',
         backgroundColor: '#FFA000',
@@ -39,7 +39,7 @@ export function onRejected(error) {
     iziToast.show({
         title: 'Error',
         titleColor: '#FFFFFF',
-        message: `${error}`,
+        message: error.message,
         messageColor: '#FFFFFF',
         messageSize: '16px',
         backgroundColor: '#EF4040',

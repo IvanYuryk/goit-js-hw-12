@@ -1,27 +1,60 @@
 import { renderImage } from './js/markup';
 import { fetchImage } from './js/api';
-import { onRejected } from './js/error-handler';
+import { onRejected, onWarning } from './js/error-handler';
 
+const imageList = document.querySelector(".gallery");
 const form = document.querySelector("#searchForm");
 const loaderContainer = document.querySelector(".loader");
+const loadMore = document.querySelector("#load");
+let currentPage = 1;
+let query = "";
 
 form.addEventListener("submit", onSearch);
+loadMore.addEventListener("click", onLoadMore);
 
-function onSearch(event) {
+async function onSearch(event) {
   event.preventDefault();
   const keyWord = event.target.keyword.value.trim();
   if (!keyWord) {
     return;
   }
+  imageList.innerHTML = '';
   loaderContainer.style.display = 'block';
+  query = keyWord;
+  currentPage = 1;
+  try {
+    const images = await fetchImage(query, currentPage)
+    renderImage(images);
+    smoothScroll();
+    loadMore.style.display = 'block';
+    form.reset();
+  } catch (error) {
+    onRejected(error);
+  } finally { loaderContainer.style.display = 'none' };
 
-  fetchImage(keyWord)
-    .then((images) => {
-      renderImage(images);
-    })
-    .catch((error) => {
-      onRejected(error);
-    }).finally(() => loaderContainer.style.display = 'none');
+}
 
-  form.reset();
+async function onLoadMore() {
+  currentPage += 1;
+  loaderContainer.style.display = 'block';
+  try {
+    const images = await fetchImage(query, currentPage)
+    renderImage(images);
+    smoothScroll();
+    if (currentPage === Math.ceil(images.totalHits / 15)) {
+      onWarning("We're sorry, but you've reached the end of search results.")
+      loadMore.style.display = 'none';
+    }
+  } catch (error) {
+    onRejected(error);
+  } finally { loaderContainer.style.display = 'none' };
+}
+
+
+function smoothScroll() {
+  const { height } = imageList.firstElementChild.getBoundingClientRect();
+  window.scrollBy({
+    top: height * 2,
+    behavior: "smooth",
+  });
 }

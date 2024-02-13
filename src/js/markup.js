@@ -6,18 +6,18 @@ const imageList = document.querySelector(".gallery");
 
 
 export function renderImage({ totalHits, hits }) {
-    if (parseInt(totalHits) > 0) {
-        const markup = hits.map(createElementGallery).join('');
-        imageList.innerHTML = markup;
-        lightbox.refresh();
-    } else {
-        imageList.innerHTML = '';
-        onWarning();
-    }
+  if (parseInt(totalHits) > 0) {
+    const markup = hits.map(createElementGallery).join('');
+    imageList.insertAdjacentHTML("beforeend", markup);
+    lightbox.refresh();
+  } else {
+    imageList.innerHTML = '';
+    onWarning('there are no images matching your search query. Please try again!');
+  }
 }
 
 function createElementGallery({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) {
-    return `
+  return `
   <li class="gallery-item">
     <a class="gallery-link" href="${largeImageURL}">
       <img class="gallery-image" src="${webformatURL}" alt="${tags}">

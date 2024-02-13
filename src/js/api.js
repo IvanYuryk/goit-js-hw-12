@@ -1,5 +1,6 @@
+import axios from "axios";
 
-export function fetchImage(keyWord) {
+export async function fetchImage(keyWord, page) {
     const BASE_URL = 'https://pixabay.com/';
     const END_POINT = 'api/';
     const PARAMS = new URLSearchParams({
@@ -7,15 +8,14 @@ export function fetchImage(keyWord) {
         q: keyWord,
         image_type: 'photo',
         orientation: 'horizontal',
-        safesearch: true
+        safesearch: true,
+        per_page: 15,
+        page,
+
     });
     const URL = `${BASE_URL}${END_POINT}?${PARAMS}`;
 
-    return fetch(URL)
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error(`${response.status} - ${response.statusText}`);
-        });
+    const { data } = await axios(URL)
+
+    return data;
 }
