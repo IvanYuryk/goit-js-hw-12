@@ -235,3 +235,11 @@ input[type='text']:focus {
 .hide {
   display: none;
 }
+#load {
+  position: relative;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 182px;
+  margin-top: 36px;
+}
