@@ -52,7 +52,7 @@ async function onLoadMore() {
 function smoothScroll() {
   const { height } = imageList.firstElementChild.getBoundingClientRect();
   window.scrollBy({
-    top: height * 2.5,
+    top: height * 2,
     behavior: "smooth",
   });
 }

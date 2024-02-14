@@ -138,6 +138,7 @@ input[type='text']:focus {
 .loader {
   display: block;
   position: relative;
+  left: 40%;
   height: 32px;
   width: 200px;
   background: #fff;
