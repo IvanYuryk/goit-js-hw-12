@@ -30,7 +30,12 @@ async function onSearch(event) {
     } else {
       renderImage(images);
       smoothScroll();
-      loadMore.style.display = 'block';
+      if (images.hits.length < 15) {
+        loadMore.style.display = 'none';
+        onWarning("We're sorry, but you've reached the end of search results.");
+      } else {
+        loadMore.style.display = 'block';
+      }
     }
     form.reset();
   } catch (error) {
@@ -39,6 +44,7 @@ async function onSearch(event) {
     loaderContainer.style.display = 'none';
   }
 }
+
 
 
 async function onLoadMore() {
