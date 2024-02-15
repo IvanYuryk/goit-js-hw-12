@@ -23,31 +23,42 @@ async function onSearch(event) {
   query = keyWord;
   currentPage = 1;
   try {
-    const images = await fetchImage(query, currentPage)
-    renderImage(images);
-    smoothScroll();
-    loadMore.style.display = 'block';
+    const images = await fetchImage(query, currentPage);
+    if (images.hits.length === 0) {
+      loadMore.style.display = 'none';
+      onWarning('There are no images matching your search query. Please try again!');
+    } else {
+      renderImage(images);
+      smoothScroll();
+      loadMore.style.display = 'block';
+    }
     form.reset();
   } catch (error) {
     onRejected(error);
-  } finally { loaderContainer.style.display = 'none' };
+  } finally {
+    loaderContainer.style.display = 'none';
+  }
 }
+
 
 async function onLoadMore() {
   currentPage += 1;
   loaderContainer.style.display = 'block';
   try {
-    const images = await fetchImage(query, currentPage)
+    const images = await fetchImage(query, currentPage);
     renderImage(images);
     smoothScroll();
-    if (currentPage === Math.ceil(images.totalHits / 15)) {
-      onWarning("We're sorry, but you've reached the end of search results.")
+    if (currentPage >= Math.ceil(images.totalHits / 15)) {
+      onWarning("We're sorry, but you've reached the end of search results.");
       loadMore.style.display = 'none';
     }
   } catch (error) {
     onRejected(error);
-  } finally { loaderContainer.style.display = 'none' };
+  } finally {
+    loaderContainer.style.display = 'none';
+  }
 }
+
 
 function smoothScroll() {
   const { height } = imageList.firstElementChild.getBoundingClientRect();
